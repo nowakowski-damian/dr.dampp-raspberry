@@ -7,14 +7,14 @@
 #include <unistd.h> // for close
 #include <arpa/inet.h>
 #include <ctype.h>
+#include "APIparser.c"
 
 const int SERVER_PORT = 9876;
-const char* SERVER_IP = "192.168.13.8";
+const char* SERVER_IP = "192.168.0.110";
 const int PACKET_SIZE_BYTES = 4;
 
 
 void configureAddresStruct(struct sockaddr_in*);
-char* parseMessage(char*);
 
 int main(){
   int udpSocket, nBytes;
@@ -37,8 +37,9 @@ int main(){
       requesting client will be stored on serverStorage variable */
     nBytes = recvfrom(udpSocket,buffer,PACKET_SIZE_BYTES,0,(struct sockaddr *)&serverStorage, &addr_size);
     /*Parse received message and make response*/
-    char answer[PACKET_SIZE_BYTES];
-    answer=parseMessage(buffer);
+    printf( "MSSG: %d %d %d \n",buffer[0],buffer[1],buffer[2] );
+    char answer[]={(char)1,(char)1,(char)1,(char)1};
+    parseMessage(buffer,answer);
     sendto(udpSocket,answer,PACKET_SIZE_BYTES,0,(struct sockaddr *)&serverStorage,addr_size);
   }
 

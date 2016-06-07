@@ -12,21 +12,21 @@ void setMotors(int right, int left){
 	if(right>=0)
 	{
 		softPwmWrite(0, right);
-        softPwmWrite(1, 0);
+        	softPwmWrite(1, 0);
 	}
 	else
 	{
 		softPwmWrite(1,( (-1)*right) );
-        softPwmWrite(0, 0);
+        	softPwmWrite(0, 0);
 	}
 	
 	if(left>=0)
-    {
-        softPwmWrite(2, left);
-        softPwmWrite(3, 0);
-    }
-    else
-    {
+    	{
+        	softPwmWrite(2, left);
+        	softPwmWrite(3, 0);
+    	}
+    	else
+    	{
 	    softPwmWrite(3, ((-1)*left));
    	    softPwmWrite(2, 0);
 	}
@@ -72,6 +72,6 @@ while(1){
 	delay(1000);
 	setMotors(100, -100);
 	delay(1000);
-  }
+  	}
 	return 0;
 }

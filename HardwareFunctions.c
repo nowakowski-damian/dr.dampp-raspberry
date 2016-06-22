@@ -36,12 +36,12 @@ void setSwitch(char num,char boolean){
 	digitalWrite(num, boolean);
 }
 //****************************************
-char left(char angle){
+void left(char angle){
 	setMotors(100, -100);
 	delay(angle*1000/180);
 }
 //****************************************
-char right(char angle){
+void right(char angle){
 	setMotors(100, -100);
 	delay(angle*1000/180);
 }

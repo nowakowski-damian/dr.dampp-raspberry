@@ -1,7 +1,7 @@
 #include <wiringPi.h>
 #include <softPwm.h>
 
-void setMotors(char, char)
+void setMotors(char, char);
 void setSwitch(char,char);
 void left(char);
 void right(char);

@@ -1,12 +1,24 @@
 #include <wiringPi.h>
 #include <softPwm.h>
 
+void init();
 void setMotors(char, char);
 void setSwitch(char,char);
 void left(char);
 void right(char);
 char getAccuLevel(void);
 char getTemperature(void);
+//****************************************
+void init()
+{
+	wiringPiSetup();
+	pinMode(0, OUTPUT);
+	pinMode(1, OUTPUT);
+	pinMode(2, OUTPUT);
+	pinMode(3, OUTPUT);
+	pinMode(4, OUTPUT);
+	softPwmCreate(0, 0, 100);
+}
 //****************************************
 void setMotors(char right, char left){
 	if(right>=0)

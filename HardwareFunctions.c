@@ -54,7 +54,7 @@ void left(char angle){
 }
 //****************************************
 void right(char angle){
-	setMotors(100, -100);
+	setMotors(-100, 100);
 	delay(angle*1000/180);
 }
 //******************************************

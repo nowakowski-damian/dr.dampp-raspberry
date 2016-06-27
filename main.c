@@ -17,6 +17,7 @@ const int PACKET_SIZE_BYTES = 4;
 void configureAddresStruct(struct sockaddr_in*);
 
 int main(){
+  initWiringPi();
   int udpSocket, nBytes;
   char buffer[PACKET_SIZE_BYTES];
   struct sockaddr_in serverAddr, clientAddr;

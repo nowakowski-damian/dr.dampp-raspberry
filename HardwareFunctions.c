@@ -1,7 +1,7 @@
 #include <wiringPi.h>
 #include <softPwm.h>
 
-void init();
+void initWiringPi(void);
 void setMotors(char, char);
 void setSwitch(char,char);
 void left(char);
@@ -9,7 +9,7 @@ void right(char);
 char getAccuLevel(void);
 char getTemperature(void);
 //****************************************
-void init()
+void initWiringPi()
 {
 	wiringPiSetup();
 	pinMode(0, OUTPUT);
@@ -45,7 +45,7 @@ void setMotors(char right, char left){
 }
 //****************************************
 void setSwitch(char num,char boolean){
-	digitalWrite(num, boolean);
+	digitalWrite((int)num,(int)boolean);
 }
 //****************************************
 void left(char angle){

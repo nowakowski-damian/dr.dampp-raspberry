@@ -1,6 +1,9 @@
 #include <wiringPi.h>
 #include <softPwm.h>
 
+#define LEFT_RIGHT_CONST_SPEED 50
+#define 180_TURNAROUND_TIME_MS 2000
+
 void initWiringPi(void);
 void setMotors(char, char);
 void setSwitch(char,char);
@@ -49,13 +52,15 @@ void setSwitch(char num,char boolean){
 }
 //****************************************
 void left(char angle){
-	setMotors(100, -100);
-	delay(angle*1000/180);
+	setMotors(LEFT_RIGHT_CONST_SPEED, -LEFT_RIGHT_CONST_SPEED);
+	delay(angle*180_TURNAROUND_TIME_MS/180);
+	setMotors(0, 0);
 }
 //****************************************
 void right(char angle){
-	setMotors(-100, 100);
-	delay(angle*1000/180);
+	setMotors(-LEFT_RIGHT_CONST_SPEED, LEFT_RIGHT_CONST_SPEED);
+	delay(angle*180_TURNAROUND_TIME_MS/180);
+	setMotors(0, 0);
 }
 //******************************************
 char getAccuLevel(){

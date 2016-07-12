@@ -5,10 +5,10 @@
 #define TURNAROUND_TIME_MS 2000
 
 void initWiringPi(void);
-void setMotors(char, char);
-void setSwitch(char,char);
-void left(char);
-void right(char);
+void setMotors(signed char, signed char);
+void setSwitch(signed char,signed char);
+void left(signed char);
+void right(signed char);
 char getAccuLevel(void);
 char getTemperature(void);
 //****************************************
@@ -23,7 +23,7 @@ void initWiringPi()
 	softPwmCreate(0, 0, 100);
 }
 //****************************************
-void setMotors(char right, char left){
+void setMotors(signed char right, signed char left){
 	if(right>=0)
 	{
 		softPwmWrite(0, (int)right);
@@ -47,17 +47,17 @@ void setMotors(char right, char left){
 	}
 }
 //****************************************
-void setSwitch(char num,char boolean){
+void setSwitch(signed char num,signed char boolean){
 	digitalWrite((int)num,(int)boolean);
 }
 //****************************************
-void left(char angle){
+void left(signed char angle){
 	setMotors(LEFT_RIGHT_CONST_SPEED, -LEFT_RIGHT_CONST_SPEED);
 	delay(angle*TURNAROUND_TIME_MS/180);
 	setMotors(0, 0);
 }
 //****************************************
-void right(char angle){
+void right(signed char angle){
 	setMotors(-LEFT_RIGHT_CONST_SPEED, LEFT_RIGHT_CONST_SPEED);
 	delay(angle*TURNAROUND_TIME_MS/180);
 	setMotors(0, 0);

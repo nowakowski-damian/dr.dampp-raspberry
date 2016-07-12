@@ -10,7 +10,7 @@
 #include "APIparser.c"
 
 const int SERVER_PORT = 9876;
-const char* SERVER_IP = "192.168.0.110";
+const char* SERVER_IP = "192.168.1.2";
 const int PACKET_SIZE_BYTES = 4;
 
 
@@ -19,7 +19,7 @@ void configureAddresStruct(struct sockaddr_in*);
 int main(){
   initWiringPi();
   int udpSocket, nBytes;
-  char buffer[PACKET_SIZE_BYTES];
+  signed char buffer[PACKET_SIZE_BYTES];
   struct sockaddr_in serverAddr, clientAddr;
   struct sockaddr_storage serverStorage;
   socklen_t addr_size, client_addr_size;

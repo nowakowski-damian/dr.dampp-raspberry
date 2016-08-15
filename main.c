@@ -10,7 +10,7 @@
 #include "APIparser.c"
 
 const int SERVER_PORT = 9876;
-const char* SERVER_IP = "192.168.1.2";
+const char* SERVER_IP = "13.13.13.1";
 const int PACKET_SIZE_BYTES = 4;
 
 

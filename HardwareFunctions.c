@@ -20,9 +20,9 @@ void initWiringPi()
 	pinMode(2, OUTPUT);
 	pinMode(3, OUTPUT);
 	pinMode(4, OUTPUT);
+	pinMode(5, OUTPUT);
+	pinMode(6, OUTPUT);
 	softPwmCreate(0, 0, 100);
-	softPwmCreate(1, 0, 100);
-	softPwmCreate(2, 0, 100);
 	softPwmCreate(3, 0, 100);
 }
 //****************************************
@@ -31,23 +31,27 @@ void setMotors(signed char right, signed char left){
 	if(right>=0)
 	{
 		softPwmWrite(0, (int)right);
-        	softPwmWrite(1, 0);
+        	digitalWrite(1, 1);
+        	digitalWrite(2, 0);
 	}
 	else
 	{
-		softPwmWrite(1,(int)-right);
-        	softPwmWrite(0, 0);
+		softPwmWrite(0, (int)-right);
+        	digitalWrite(1, 0);
+        	digitalWrite(2, 1);
 	}
 	
 	if(left>=0)
     	{
-        	softPwmWrite(2, (int)left);
-        	softPwmWrite(3, 0);
+        	softPwmWrite(3, (int)left);
+        	softPwmWrite(4, 1);
+        	softPwmWrite(5, 0);
     	}
     	else
     	{
-	    	softPwmWrite(3, (int)-left );
-   	  	softPwmWrite(2, 0);
+        	softPwmWrite(3, (int)-left);
+        	softPwmWrite(4, 0);
+        	softPwmWrite(5, 1);
 	}
 }
 //****************************************
